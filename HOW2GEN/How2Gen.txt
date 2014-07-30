@@ -1,0 +1,60 @@
+#
+# SO you want to generate MC  samples yourself (SUSY in this case!) 
+# easy, just do the following steps
+# For any different model, you will have to produce the ".slha" 
+# files your selve using any SUSY event generation and decay packages
+# like ISAJET + SDECAY os SPHENO and things like that.
+# enjoy
+# TEN@UMN.EDU
+#
+### To Gen MC just do in a CMSSW environment:
+cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda160_CTau6000_8TeV_pythia6_cff.py -s
+GEN --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM
+-n 1000 --no_exec
+
+###can always decide to extend to RECO by doing:
+cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s
+GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,RECO --conditions=START61_V11::All
+--datatier 'GEN-SIM-RECO' --eventcontent RECOSIM -n 50112 --no_exec
+
+### Now Generate, Simulate and reconstruct events using
+
+cmsRun  GMSB_Lambda100_CTau6000_8TeV_pythia6_cff_py_GEN.py >&log.log& top
+
+#### After files are produced use the Analyzer to Analyze events:
+
+ cmsRun MCAnalysis_cfg.py
+
+### Analyzer uses the standalone class: 
+GENAnalyzer.cc
+
+### Can also generate MC events using CRAB or Condor
+### see the crab.cfg or multicrab.cfg  for CRAB
+### see  mc_gmsbCondor.sub amd .(t)sh files
+### Submit condor jobs by doing
+
+condor_submit mc_gen_condor1000.sub
+# check how jobs are doing using:
+
+condor_status -submitters
+#or
+condor_q -submitter <username>
+
+#### for CRAB simply do:
+## after you have source all your crab and grid setting variables do:
+
+crab -create -submit
+
+# check crab Job status by doing:
+
+crab -status
+
+# Once Jobs are done, extract out puts ( if you selected the output_return = 1
+# )
+
+crab -getoutput -c <crab-directory name>
+
+#or simply
+
+crab -getoutput 
+

@@ -1,0 +1,33 @@
+universe   = vanilla
+#universe   = globus
+#globusscheduler = cmsosgce.fnal.gov/jobmanager-condori
+Executable =/uscms_data/d3/tnorbert/MC_GEN/WORKING_RELEASE/CMSSW_6_1_2/src/gmsb_condo_run500.csh
+Requirements = Memory >= 199 &&OpSys == "LINUX"&& (Arch != "DUMMY" )
+Should_Transfer_Files = YES
+WhenTOTransferOutput  = ON_EXIT
+#Transfer_Output_Files = ${_CONDOR_SCRATCH_DIR}/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN.root
+Transfer_Output_Files = GMSB_Lambda180_CTau500_8TeV_pythia6_cff_py_GEN_SIM.root
+#transfer_output_files = 	 
+
+Requirements = Memory >= 199 &&OpSys == "LINUX"&& (Arch != "DUMMY" )&& Disk > 1000000
+Should_Transfer_Files = YES
+WhenToTransferOutput = ON_EXIT
+
+Output =/uscmst1b_scratch/lpc1/3DayLifetime/tnorbert/trash/MCgen_$(Cluster)_$(Process).stdout
+Error  =/uscmst1b_scratch/lpc1/3DayLifetime/tnorbert/trash/MCgen_$(Cluster)_$(Process).stderr
+Log    =/uscmst1b_scratch/lpc1/3DayLifetime/tnorbert/trash/MCgen_$(Cluster)_$(Process).log
+
+notify_user = ${LOGNAME}@FNAL.GOV
+x509userproxy = $ENV(X509_USER_PROXY)
+
+Queue 2000
+
+
+
+
+
+
+
+
+
+
