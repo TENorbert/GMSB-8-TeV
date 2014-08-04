@@ -1,0 +1,89 @@
+#### Step to Generate up to RECO MC samples:
+#### TEN @ UMN.EDU
+
+# See here: http://hep.ucsb.edu/people/cjustus/MonteCarloEventGeneration/Step1/Step1.html
+
+#First: To Generate, SIM and RECO MC
+#Events with ease check out the follow packages from standard cmssw:
+
+     Configuration/GenProduction
+     Configuration/Generator
+     SimGeneral
+     GeneratorInterface/  ## If you want to use only pythia, remove the other
+###interfaces as they sometimes cause compillation errors
+### You can get all these packages by doing 
+git cms-addpkg <package-name>
+
+# Or check out the whole CMSSW SW and 
+# Get these from there by doing:
+git clone https://github.com/cms-sw/cmssw.git 
+
+### Now setup your CMS environment
+cmsenv
+# compile with
+
+scram b -j9; 
+
+### With your SLHA files and config files kept in a
+
+<package>/<subpackage>/python/
+## directory, you can begin generating events
+
+### Sapmple config files are in here: 
+Configuration/GenProduction/python
+
+### Sample SLHA files are found in here:
+Configuration/Generator/data/
+
+### Step 1 Generate sn Simulate
+
+cmsDriver.py CRAB-MC-GEN/Configurations/python/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s GEN,SIM --conditions auto:mc --datatier 'GEN-SIM' --eventcontent RAWSIM --beamspot Realistic8TeV2012Collision -n 2 --no_exec
+
+##Output file is::file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
+# Now Do
+ 
+cmsRun file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
+
+## Outputfile is: file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.root
+
+## step2  Simulate and Digitize
+### Use output file of Step1 as Input to this step file output call 
+###  step2_DIGI_L1_DIGI2RAW_HLT_PU.py
+### i.e change input file with : file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.root
+
+
+cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:GRun --conditions auto:mc --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/StandardSequences/DigiToRecoNoPU.customise --datatier GEN-SIM-RAW --eventcontent RAWSIM --no_exec
+
+##Outputfile: step2_DIGI_L1_DIGI2RAW_HLT_PU.py
+
+### Make sure PU files are stored locally in :: SimGeneral/MixingModule/python/mixPoolSource_cfi.py
+### if not change to  use local RealVal files
+### sometimes file in root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0195/1AD9E627-7316-E111-B3A5-001A9281173C.root
+## will be use if you are a CMS member and have register grid certificate:
+### After Changing input file do:
+
+cmsRun step2_DIGI_L1_DIGI2RAW_HLT_PU.py
+
+### Use Output file: step2_DIGI_L1_DIGI2RAW_HLT_PU.root
+
+### Step 3 : RAWto digi and RECO
+
+cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions auto:mc --pileup NoPileUp --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent AODSIM --no_exec
+
+### If this step keep failing as it always can do:
+## comment out  here in this file: reco_TLR_42X.py 
+    #def customisePPMC(process):
+    #process=customiseCommon(process)
+### Or try using other ones
+
+##e OutPutfile: step3_RAW2DIGI_L1Reco_RECO.py
+### Use Outputfile in step 2 : step2_DIGI_L1_DIGI2RAW_HLT_PU.root 
+### as input file from config file in step 3
+
+### After Renaming your Number  events, Input file and Output file name
+### Finally do:
+
+cmsRun step3_RAW2DIGI_L1Reco_RECO.py
+
+#### Thats all there is: You just Generated, SIM and RECO events yourself.
+#### Heyy !!!!
