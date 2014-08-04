@@ -37,6 +37,15 @@ Configuration/Generator/data/
 
 ### Step 1 Generate sn Simulate
 
+###If USING CMSSW_53X
+
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s GEN,SIM --conditions=START53_V5::All --datatier 'GEN-SIM' --eventcontent RAWSIM --beamspot Realistic8TeV2012Collision -n 2 --no_exec
+
+###If Using CMSSW_6_1_2
+
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s GEN,SIM --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM --beamspot Realistic8TeV2012Collision -n 2 --no_exec
+
+###In General just do
 cmsDriver.py CRAB-MC-GEN/Configurations/python/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s GEN,SIM --conditions auto:mc --datatier 'GEN-SIM' --eventcontent RAWSIM --beamspot Realistic8TeV2012Collision -n 2 --no_exec
 
 ##Output file is::file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
