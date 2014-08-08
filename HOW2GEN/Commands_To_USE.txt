@@ -63,6 +63,9 @@ cmsRun file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
 
 cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:GRun --conditions auto:mc --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/StandardSequences/DigiToRecoNoPU.customise --datatier GEN-SIM-RAW --eventcontent RAWSIM --no_exec
 
+### Or specify Particular GlobalTag
+cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:GRun --conditions=START61_V11::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/StandardSequences/DigiToRecoNoPU.customise --datatier GEN-SIM-RAW --eventcontent RAWSIM --no_exec
+
 ##Outputfile: step2_DIGI_L1_DIGI2RAW_HLT_PU.py
 
 ### Make sure PU files are stored locally in :: SimGeneral/MixingModule/python/mixPoolSource_cfi.py
@@ -78,6 +81,10 @@ cmsRun step2_DIGI_L1_DIGI2RAW_HLT_PU.py
 ### Step 3 : RAWto digi and RECO
 
 cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions auto:mc --pileup NoPileUp --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent AODSIM --no_exec
+
+### Or specify Particular GlobalTag
+
+cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All  --pileup NoPileUp --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent AODSIM --no_exec
 
 ### If this step keep failing as it always can do:
 ## comment out  here in this file: reco_TLR_42X.py 
