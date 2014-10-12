@@ -4,6 +4,10 @@
 # See here: http://hep.ucsb.edu/people/cjustus/MonteCarloEventGeneration/Step1/Step1.html
 
 #First: To Generate, SIM and RECO MC
+     Install on Laptop ISASUGRA from here:
+     
+     http://www.nhn.ou.edu/~isajet/ # if you run into compiling issues revert
+                                    # Old versions of isajet.car
 #Events with ease check out the follow packages from standard cmssw:
 
      Configuration/GenProduction
