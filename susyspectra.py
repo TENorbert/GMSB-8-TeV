@@ -194,7 +194,8 @@ def plotMasses( masses, options ):
    """
 
    # Initialise canvas
-   c = TCanvas( 'c', 'SUSY spectrum', 10, 10, 860, 860 )
+   #c = TCanvas( 'c', 'SUSY spectrum', 10, 10, 900, 900 )
+   c = TCanvas( 'c', 'SUSY spectrum', 900, 900 )
    c.SetLeftMargin(0.15)
    c.SetBorderMode(0)
    c.SetFillColor(0)
@@ -209,13 +210,14 @@ def plotMasses( masses, options ):
    ymax = options.ymax
    xstart = 1.5
    ystart = 20.*(ymax/1001.) # Scale margin with scale size
+   #ystart = 0.5 # Scale margin with scale size
 
    c.Range( -xstart, -ystart, xmax+xstart, ymax+ystart )
 
    lwidth = 0.5
    tspace = 0.1
    cols = [ 1., 3.25, 5.5, 7.8 ]
-   fsize  = 24
+   fsize  = 30
 
    # Draw frame
    frame = TFrame( 0., 0., xmax, ymax )
@@ -228,8 +230,8 @@ def plotMasses( masses, options ):
    ax.SetLabelFont(63)
    ax.SetLabelSize(1.2*fsize)
    ax.SetTitleFont(63)
-   ax.SetTitleSize(1.2*fsize)
-   if options.dotitle: ax.SetTitle( "m [GeV/c^{2}]" )
+   ax.SetTitleSize(1.0*fsize)
+   if options.dotitle: ax.SetTitle( "Mass [GeV/c^{2}]" )
    ax.SetTitleOffset(1.7)
    ax.Draw()
    if options.do_raxis:
@@ -261,6 +263,7 @@ def plotMasses( masses, options ):
    for pdgId in masses.keys():
       if pdgId in names.keys():
          if masses[pdgId]<0: masses[pdgId] = -masses[pdgId]
+        # if masses[pdgId] = 0: masses[pdgId] = masses[pdgId]
          if masses[pdgId]>ymax:
             print "*** WARNING: mass of ",names[pdgId]," is out of range:"
             print masses[pdgId],">",ymax
