@@ -8,9 +8,12 @@
 # TEN@UMN.EDU
 #
 ### To Gen MC just do in a CMSSW environment:
-cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda160_CTau6000_8TeV_pythia6_cff.py -s
-GEN --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM
--n 1000 --no_exec
+cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda160_CTau6000_8TeV_pythia6_cff.py -s GEN --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM -n 1000 --no_exec
+
+### Better use this:
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda220_CTau2000_8TeV_pythia6_cff.py -s GEN,SIM --conditions auto:mc --datatier GEN-SIM --eventcontent RAWSIM --beamspot Realistic8TeV2012Collision -n 60000 --no_exec
+
+
 
 ###can always decide to extend to RECO by doing:
 cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda180_CTau6000_8TeV_pythia6_cff.py -s

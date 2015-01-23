@@ -8,7 +8,9 @@
      
      http://www.nhn.ou.edu/~isajet/ # if you run into compiling issues revert
                                     # Old versions of isajet.car
-#Events with ease check out the follow packages from standard cmssw:
+   #Events with ease check out the follow packages from standard cmssw:
+    # Git a particular CMSSW version
+    git clone -b CMSSW_5_3_X https://github.com/cms-sw/cmssw.git
 
      Configuration/GenProduction
      Configuration/Generator
