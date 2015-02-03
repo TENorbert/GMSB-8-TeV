@@ -41,6 +41,9 @@ Configuration/GenProduction/python
 ### Sample SLHA files are found in here:
 Configuration/Generator/data/
 
+
+
+
 ### Step 1 Generate sn Simulate
 
 ###If USING CMSSW_53X
@@ -60,6 +63,22 @@ cmsDriver.py CRAB-MC-GEN/Configurations/python/GMSB_Lambda180_CTau6000_8TeV_pyth
 cmsRun file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
 
 ## Outputfile is: file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.root
+
+## using Output of Step one (GEN, SIM), One can just continue with addition steps from
+##this step as follows  see page:: https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideCmsDriver
+## Including the pileup conditions
+cmsDriver.py --filein=Lambda120_CTau6000_8TeV-GMSB/res/GMSB_Lambda120_CTau6000_8TeV_pythia6_cff_py_GEN_SIM_87_1_2Nc.root -s DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions=START53_V5::All --pileup 2012_Startup_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+# A working version in CMSSW_5_3_X = 
+cmsDriver.py  Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py  -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO --conditions=START53_V19E::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Creating from GEN-SIM
+cmsDriver.py
+--filein=Lambda120_CTau6000_8TeV-GMSB/res/GMSB_Lambda120_CTau6000_8TeV_pythia6_cff_py_GEN_SIM_123_1_1S9.root
+-s DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V29B::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
 
 ## step2  Simulate and Digitize
 ### Use output file of Step1 as Input to this step file output call 
