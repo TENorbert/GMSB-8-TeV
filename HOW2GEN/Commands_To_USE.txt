@@ -69,8 +69,15 @@ cmsRun file:GMSB_Lambda180_CTau6000_8TeV_pythia6_cff_py_GEN_SIM.py
 ## Including the pileup conditions
 cmsDriver.py --filein=Lambda120_CTau6000_8TeV-GMSB/res/GMSB_Lambda120_CTau6000_8TeV_pythia6_cff_py_GEN_SIM_87_1_2Nc.root -s DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions=START53_V5::All --pileup 2012_Startup_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
 
-# A working version in CMSSW_5_3_X = 
+### Creat GEN-SIM only in CMSS_5_3_X
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau1000_8TeV_pythia6_cff.py -s GEN,SIM --conditions=START53_V19E::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO
+--eventcontent RECOSIM -n 6000 --no_exec
+
+
+# Create GEN to RECO at Once in CMSSW_5_3_X = 
 cmsDriver.py  Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py  -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO --conditions=START53_V19E::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
 
 ## Creating from GEN-SIM
 cmsDriver.py
