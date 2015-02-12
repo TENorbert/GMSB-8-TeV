@@ -1,0 +1,222 @@
+1)
+----- Begin Fatal Exception 12-Feb-2015 09:01:43 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+
+#Switch Global Tags to
+ --conditions=START53_V7A::All
+
+New Error
+
+----- Begin Fatal Exception 12-Feb-2015 10:08:25 CST-----------------------
+An exception of category 'FailModule' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'AlCa_LumiPixels_v6'
+   [2] Calling event method for module HLTLevel1GTSeed/'hltL1sL1ZeroBiasInstance1'
+Exception Message:
+
+Algorithm  L1_ZeroBias_Instance1, requested as seed by a HLT path, not found in the L1 trigger menu
+   L1Menu_Collisions2012_v2/L1T_Scales_20101224/Imp0
+Incompatible L1 and HLT menus.
+
+# Tried now with
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+## let see what it says!!
+
+
+----- Begin Fatal Exception 12-Feb-2015 10:21:45 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5PFL1L2L3' to make data JetCorrector/'hltESPAK5PFL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component L1FastjetCorrectionESProducer/'hltESPL1PFFastJetCorrectionESProducer' to make data JetCorrector/'hltESPL1PFFastJetCorrectionESProducer' in record JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5PFHLT" in record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+
+## Now lets try this:  i.e use HLT:7E33v3 
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v3,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+# What did we get?
+
+----- Begin Fatal Exception 12-Feb-2015 10:28:38 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+# Now what do we do? Give up?
+  We try HLT:GRun
+
+# what happens?
+----- Begin Fatal Exception 12-Feb-2015 10:34:28 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5CaloL1L2L3' to make data JetCorrector/'hltESPAK5CaloL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component L1FastjetCorrectionESProducer/'hltESPL1FastJetCorrectionESProducer' to make data JetCorrector/'hltESPL1FastJetCorrectionESProducer' in record JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5CaloHLT" in record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+## Abandon hope?? NEVER!! we try HLT:FULL
+
+# And now what?
+
+----- Begin Fatal Exception 12-Feb-2015 10:39:32 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5CaloL1L2L3' to make data JetCorrector/'hltESPAK5CaloL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component L1FastjetCorrectionESProducer/'hltESPL1FastJetCorrectionESProducer' to make data JetCorrector/'hltESPL1FastJetCorrectionESProducer' in record JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5CaloHLT" in record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+
+## Are you still there? Okay we try nothing? simply HLT
+## what do we get?
+
+----- Begin Fatal Exception 12-Feb-2015 10:44:04 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5CaloL1L2L3' to make data JetCorrector/'hltESPAK5CaloL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component L1FastjetCorrectionESProducer/'hltESPL1FastJetCorrectionESProducer' to make data JetCorrector/'hltESPL1FastJetCorrectionESProducer' in record JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5CaloHLT" in record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+## keep trying? just remove START and use 
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO --conditions auto:startup_7E33v4 --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+## We see what happens?
+----- Begin Fatal Exception 12-Feb-2015 10:46:48 CST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+Unable to find plugin 'EcalLinearCorrectionsRcd@NewProxy'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
+
+
+some hints: available --conditions:
+available keys are
+startup,com10,hltonline_HIon,startpa,startup_GRun,starthi,starthi_HIon,startup_PIon,hltonline_5E33v4,com10_PIon,hltonline_7E33v4,upgradePLS1,hltonline_GRun,startup_7E33v2,startup_7E33v3,startup_7E33v4,com10_GRun,com10_HIon,com10_8E33v2,startup_8E33v2,hltonline,mc,hltonline_7E33v2,hltonline_7E33v3,hltonline_PIon,com10_7E33v2,com10_7E33v4,com10_7E33v3,com10_5E33v4,hltonline_8E33v2,startup_5E33v4
+
+## Now we choose say startup_GRun
+
+----- Begin Fatal Exception 12-Feb-2015 10:51:11 CST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+Unable to find plugin 'EcalLinearCorrectionsRcd@NewProxy'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
+## Now it seems like CMSSW Release is the issue
+
+we do :
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions auto --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+# What happens?
+----- Begin Fatal Exception 12-Feb-2015 10:53:11 CST-----------------------
+An exception of category 'Conditions' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+TagCollectionRetriever::getTagCollection: global tag: auto does not exist 
+----- End Fatal Exception -------------------------------------------------
+
+
+
+## Now we do:
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions auto:mc --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec 
+
+##Error is :
+----- Begin Fatal Exception 12-Feb-2015 10:57:02 CST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+Unable to find plugin 'EcalLinearCorrectionsRcd@NewProxy'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
+
+## What next?
+we do: 
+
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions auto:startup_GRun --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## what do we get?
+
+----- Begin Fatal Exception 12-Feb-2015 10:59:43 CST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+Unable to find plugin 'EcalLinearCorrectionsRcd@NewProxy'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
+
+----- Begin Fatal Exception 12-Feb-2015 11:01:20 CST-----------------------
+An exception of category 'PluginNotFound' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+Unable to find plugin 'EcalLinearCorrectionsRcd@NewProxy'. Please check spelling of name.
+----- End Fatal Exception -------------------------------------------------
+
+## Again?
+I tried: 
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO --conditions auto:startup_7E33v4 --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+##Same Error as above:
+
+## Now Tried: 
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+error: 
+----- Begin Fatal Exception 12-Feb-2015 11:07:23 CST-----------------------
+An exception of category 'Conditions' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing ESSource: class=PoolDBESSource label='GlobalTag'
+Exception Message:
+TagCollectionRetriever::getTagCollection: global tag: START5_3_V7A::All does not exist 
+----- End Fatal Exception -------------------------------------------------
+
+## I try: 
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+##Error:
+----- Begin Fatal Exception 12-Feb-2015 11:12:54 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5PFL1L2L3' to make data JetCorrector/'hltESPAK5PFL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component L1FastjetCorrectionESProducer/'hltESPL1PFFastJetCorrectionESProducer' to make data JetCorrector/'hltESPL1PFFastJetCorrectionESProducer' in record JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5PFHLT" in record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
