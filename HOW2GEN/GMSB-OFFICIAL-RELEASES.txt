@@ -1,0 +1,13 @@
+## Official GMSB Samples:
+=====> 1) 
+### GMSB Sample: dataset=/GMSB_Lambda-180_CTau-50_TuneZ2star_8TeV-pythia6/Summer12_DR53X-PU_S10_START53_V19-v1/AODSIM                                             
+### Official Reslease: CMSSW_5_3_14
+=====>> 2)
+
+### GMSB Samples: release dataset=/GMSB_Lambda-180_CTau-50_TuneZ2star_8TeV-pythia6/Summer12_DR53X-PU_S10_START53_V7A-v1/GEN-SIM-RECO
+
+### Official Release: CMSSW_5_3_2_patch5
+
+=====>> 3)
+### GMSB SAMPLE: release dataset=/GMSB_Lambda-160_CTau-6000_TuneZ2star_8TeV-pythia6/Summer12_DR53X-PU_S10_START53_V7A-v1/GEN-SIM-RECO
+### Official Release: Release: CMSSW_5_3_2_patch5

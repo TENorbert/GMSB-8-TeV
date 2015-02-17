@@ -220,3 +220,363 @@ No data of type "JetCorrectorParametersCollection" with label "AK5PFHLT" in reco
  Please add an ESSource or ESProducer to your job which can deliver this data.
 ----- End Fatal Exception -------------------------------------------------
 
+## Tried:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+
+##Error:
+
+----- Begin Fatal Exception 12-Feb-2015 13:02:43 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error
+----- Begin Fatal Exception 13-Feb-2015 10:00:12 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+### I Tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v3,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error
+----- Begin Fatal Exception 13-Feb-2015 10:05:08 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I Tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+##Error
+----- Begin Fatal Exception 13-Feb-2015 10:08:17 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module
+EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5PFL1L2L3' to
+make data JetCorrector/'hltESPAK5PFL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component
+L1FastjetCorrectionESProducer/'hltESPL1PFFastJetCorrectionESProducer' to make
+data JetCorrector/'hltESPL1PFFastJetCorrectionESProducer' in record
+JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5PFHLT" in
+record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+### Conclusion
+## --conditions=START53_V7A::All   is I guess bogus!!!
+##  HLT:7E33v4 is also bogus to Jets
+
+
+
+
+
+## I tried this:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7B::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+##Error is this:
+
+----- Begin Fatal Exception 13-Feb-2015 09:47:58 CST-----------------------
+An exception of category 'FailModule' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'HLT_IsoMu8_eta2p1_LooseIsoPFTau20_L1ETM26_v1'
+   [2] Calling event method for module HLTLevel1GTSeed/'hltL1sL1Mu7erETM26'
+Exception Message:
+
+Algorithm  L1_Mu7er_ETM26, requested as seed by a HLT path, not found in the
+L1 trigger menu
+   L1Menu_Collisions2012_v2/L1T_Scales_20101224/Imp0
+Incompatible L1 and HLT menus.
+
+----- End Fatal Exception -------------------------------------------------
+
+## I tried 
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7B::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+##Error;
+----- Begin Fatal Exception 13-Feb-2015 09:53:49 CST-----------------------
+An exception of category 'FailModule' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'AlCa_LumiPixels_v6'
+   [2] Calling event method for module
+HLTLevel1GTSeed/'hltL1sL1ZeroBiasInstance1'
+Exception Message:
+
+Algorithm  L1_ZeroBias_Instance1, requested as seed by a HLT path, not found
+in the L1 trigger menu
+   L1Menu_Collisions2012_v2/L1T_Scales_20101224/Imp0
+Incompatible L1 and HLT menus.
+
+----- End Fatal Exception -------------------------------------------------
+
+## I tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v3,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7B::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+### Error
+
+Begin Fatal Exception 13-Feb-2015 10:19:43 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I tried:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7B::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+#Error
+----- Begin Fatal Exception 13-Feb-2015 10:25:17 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7C::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+##Error
+----- Begin Fatal Exception 13-Feb-2015 10:28:54 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module
+EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5CaloL1L2L3'
+to make data JetCorrector/'hltESPAK5CaloL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component
+L1FastjetCorrectionESProducer/'hltESPL1FastJetCorrectionESProducer' to make
+data JetCorrector/'hltESPL1FastJetCorrectionESProducer' in record
+JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5CaloHLT" in
+record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+## I Tried:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7C::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error:
+----- Begin Fatal Exception 13-Feb-2015 10:38:27 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module CastorSimpleReconstructor/'castorreco'
+Exception Message:
+No "CastorSaturationCorrsRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I Tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v3,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7C::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error
+----- Begin Fatal Exception 13-Feb-2015 10:43:37 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module CastorSimpleReconstructor/'castorreco'
+Exception Message:
+No "CastorSaturationCorrsRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+## I Tried
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v4,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7C::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error
+----- Begin Fatal Exception 13-Feb-2015 10:47:50 CST-----------------------
+An exception of category 'NoProxyException' occurred while
+   [0] Processing run: 1
+   [1] Running path 'HLTriggerFirstPath'
+   [2] Calling beginRun for module
+EventSetupRecordDataGetter/'hltGetConditions'
+   [3] Using EventSetup component JetCorrectionESChain/'hltESPAK5PFL1L2L3' to
+make data JetCorrector/'hltESPAK5PFL1L2L3' in record JetCorrectionsRecord
+   [4] Using EventSetup component
+L1FastjetCorrectionESProducer/'hltESPL1PFFastJetCorrectionESProducer' to make
+data JetCorrector/'hltESPL1PFFastJetCorrectionESProducer' in record
+JetCorrectionsRecord
+Exception Message:
+No data of type "JetCorrectorParametersCollection" with label "AK5PFHLT" in
+record "JetCorrectionsRecord"
+ Please add an ESSource or ESProducer to your job which can deliver this data.
+----- End Fatal Exception -------------------------------------------------
+
+## conclusion  HLT:7E33v4 is messed up for jets!!
+
+## Now I tried:
+
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7G::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+### Now I tried:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Error
+----- Begin Fatal Exception 17-Feb-2015 12:35:07 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module
+EcalUncalibRecHitProducer/'ecalGlobalUncalibRecHit'
+Exception Message:
+No "EcalSampleMaskRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+
+## Now Tried:
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V7L::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+## Since I saw that issue of EcalSampleMask was solved in START53_V7L
+
+## I got error:
+----- Begin Fatal Exception 17-Feb-2015 13:30:44 CST-----------------------
+An exception of category 'MissingProduct' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module PFProducer/'particleFlowTmp'
+Exception Message:
+cannot find muons: InputTag:  label = muons1stStep, instance = 
+----- End Fatal Exception -------------------------------------------------
+
+### Now I will try
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO
+--conditions=START53_V8::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+
+## Error:
+----- Begin Fatal Exception 17-Feb-2015 14:28:13 CST-----------------------
+An exception of category 'NoRecord' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module CastorSimpleReconstructor/'castorreco'
+Exception Message:
+No "CastorSaturationCorrsRcd" record found in the EventSetup.
+ Please add an ESSource or ESProducer that delivers such a record.
+----- End Fatal Exception -------------------------------------------------
+
+
+
+
+
+
+
+
+
+
