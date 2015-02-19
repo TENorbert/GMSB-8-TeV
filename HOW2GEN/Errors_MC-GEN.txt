@@ -572,10 +572,40 @@ No "CastorSaturationCorrsRcd" record found in the EventSetup.
 ----- End Fatal Exception -------------------------------------------------
 
 
+## I tried breaking up the process into 3 steps
+yet still got this error in CMSSW_5_3_2_patch5 release in which 
+GeneratorInterphase  package in unable to compile Pythia6
 
 
 
+### Now the altermate Error:
+### common even with different global Taggs
 
+%MSG-e MissingInput:  PFTrackProducer:uncleanedOnlyPfTrack  18-Feb-2015
+%17:00:25 CST Run: 1 Event: 1
+there is no valide:InputTag:  label = muons1stStep, instance =  to be used.
+%MSG
+%MSG-e MissingInput:  PFTrackProducer:uncleanedOnlyPfTrack  18-Feb-2015
+%17:00:25 CST Run: 1 Event: 1
+there is no valide:InputTag:  label = muons1stStep, instance =  to be used.
+%MSG
+%MSG-e PFProducer:  PFProducer:particleFlowTmp 18-Feb-2015 17:00:25 CST  Run:
+%1 Event: 1
+cannot find muons: InputTag:  label = muons1stStep, instance = 
+%MSG
+
+
+----- Begin Fatal Exception 18-Feb-2015 17:00:25 CST-----------------------
+An exception of category 'MissingProduct' occurred while
+   [0] Processing run: 1 lumi: 1 event: 1
+   [1] Running path 'reconstruction_step'
+   [2] Calling event method for module PFProducer/'particleFlowTmp'
+Exception Message:
+cannot find muons: InputTag:  label = muons1stStep, instance = 
+----- End Fatal Exception -------------------------------------------------
+Another exception was caught while trying to clean up files after the primary
+fatal exception.
+18-Feb-2015 17:00:25 CST  Closed file file:step2_DIGI_L1_DIGI2RAW_HLT_PU.root
 
 
 

@@ -141,3 +141,40 @@ cmsRun step3_RAW2DIGI_L1Reco_RECO.py
 
 #### Thats all there is: You just Generated, SIM and RECO events yourself.
 #### Heyy !!!!
+
+
+
+
+
+### How to do the Real GMSB Reco in CMSSW_5_3_2_patch5
+
+cmsDriver.py
+Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
+-s GEN,SIM --conditions=START53_V7A::All --pileup
+2012_Summer_50ns_PoissonOOTPU --datatier GEN-SIM --eventcontent RAWSIM -n 20
+--no_exec
+
+### Now Run
+cmsRun GMSB_Lambda120_CTau4000_8TeV_pythia6_cff_py_GEN_SIM_PU.py
+
+
+#### Step 2
+
+cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:7E33v2
+--conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
+--customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
+GEN-SIM-RAW --eventcontent RAWSIM --no_exec
+
+### 
+cmsRun  step2_DIGI_L1_DIGI2RAW_HLT_PU.py
+
+### Step 3
+cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All
+--pileup 2012_Summer_50ns_PoissonOOTPU --customise
+Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO
+--eventcontent RECOSIM --no_exec
+
+### Final Reco step
+cmsRun step3_RAW2DIGI_L1Reco_RECO_PU.py
+
+
