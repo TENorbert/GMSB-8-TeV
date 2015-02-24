@@ -43,6 +43,11 @@ Configuration/Generator/data/
 
 
 
+### GEN-SIM-RECO in CMSSW_6XY!!!
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+### GEN-SIM-RECO  Works in CMSSW_6_1_1 Like Magic!!!
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
 
 ### Step 1 Generate sn Simulate
 
@@ -148,11 +153,7 @@ cmsRun step3_RAW2DIGI_L1Reco_RECO.py
 
 ### How to do the Real GMSB Reco in CMSSW_5_3_2_patch5
 
-cmsDriver.py
-Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py
--s GEN,SIM --conditions=START53_V7A::All --pileup
-2012_Summer_50ns_PoissonOOTPU --datatier GEN-SIM --eventcontent RAWSIM -n 20
---no_exec
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --datatier GEN-SIM --eventcontent RAWSIM -n 20 --no_exec
 
 ### Now Run
 cmsRun GMSB_Lambda120_CTau4000_8TeV_pythia6_cff_py_GEN_SIM_PU.py
@@ -160,19 +161,13 @@ cmsRun GMSB_Lambda120_CTau4000_8TeV_pythia6_cff_py_GEN_SIM_PU.py
 
 #### Step 2
 
-cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:7E33v2
---conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU
---customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier
-GEN-SIM-RAW --eventcontent RAWSIM --no_exec
+cmsDriver.py step2 --step DIGI,L1,DIGI2RAW,HLT:7E33v2 --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RAW --eventcontent RAWSIM --no_exec
 
 ### 
 cmsRun  step2_DIGI_L1_DIGI2RAW_HLT_PU.py
 
 ### Step 3
-cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All
---pileup 2012_Summer_50ns_PoissonOOTPU --customise
-Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO
---eventcontent RECOSIM --no_exec
+cmsDriver.py step3 --step RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM --no_exec
 
 ### Final Reco step
 cmsRun step3_RAW2DIGI_L1Reco_RECO_PU.py
