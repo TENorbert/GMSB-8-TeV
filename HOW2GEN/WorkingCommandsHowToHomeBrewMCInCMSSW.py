@@ -32,6 +32,42 @@ git cms-addpkg GeneratorInterface/Pythia6Interface
 scram b -j9;
 
 ### Now Begin the MC Generation and RECO Process!!
+
+
+### working Steps for GEN SIM CMSSW_5_3_2_patch5
+
+## Step 1 GEN-SIM
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau50_8TeV_pythia6_cff.py --fileout file:EXO-Summer12-02641.root --mc --eventcontent RAWSIM --datatier GEN-SIM --conditions START53_V7A::All --beamspot Realistic8TeVCollision --step GEN,SIM -n 5 --no_exec
+
+ cmsRun GMSB_Lambda180_CTau50_8TeV_pythia6_cff_py_GEN_SIM.py
+
+## Step 2 DIGI to HLT
+
+cmsDriver.py step1 --filein "file:./EXO-Summer12-02641.root" --fileout file:EXO-Summer12DR53X-02697_step1.root --mc --eventcontent RAWSIM --pileup 2012_Summer_50ns_PoissonOOTPU --pileup_input "dbs:/MinBias_TuneZ2star_8TeV-pythia6/Summer12-START50_V13-v3/GEN-SIM" --datatier GEN-SIM-RAW --conditions START53_V7A::All --step DIGI,L1,DIGI2RAW,HLT:7E33v2 -n 5 --no_exec
+
+cmsRun step1_DIGI_L1_DIGI2RAW_HLT_PU.py
+
+## step 3 HLT to RECO
+
+cmsDriver.py step2 --filein file:EXO-Summer12DR53X-02697_step1.root --fileout file:EXO-Summer12DR53X-02697.root --mc --eventcontent RECOSIM,DQM --datatier RECOSIM,DQM --conditions START53_V7A::All -step RAW2DIGI,L1Reco,RECO,DQM:DQMOfflinePOGMC -n 5 --no_exec
+
+cmsRun step2_RAW2DIGI_L1Reco_RECO_DQM.py
+
+#############################################
+### ALL IN ONE STEP  ########################
+#############################################
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU --pileup_input "dbs:/MinBias_TuneZ2star_8TeV-pythia6/Summer12-START50_V13-v3/GEN-SIM/store/mc/Summer12/MinBias_TuneZ2star_8TeV-pythia6/GEN-SIM/START50_V13-v3/0000/005825F1-F260-E111-BD97-003048C692DA.root"  --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+## cannot see pileup file: --pileup_input "dbs:/MinBias_TuneZ2star_8TeV-pythia6/Summer12-START50_V13-v3/GEN-SIM"
+
+### Works Locally If  input command pile-up file is removed ( might work on crab? or find a way to get pileup files locally)
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda120_CTau4000_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v2,RAW2DIGI,L1Reco,RECO --conditions=START53_V7A::All --pileup 2012_Summer_50ns_PoissonOOTPU  --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO --eventcontent RECOSIM -n 20 --no_exec
+
+### OR DO
+
+
+
+
+###  Same as  Standard CMS MC Officials But not working
 ##1)
 ##********************
 ##GEN-SIM:
@@ -67,26 +103,6 @@ https://cms-pdmv.cern.ch/mcm/requests?prepid=EXO-Summer12DR53X-02697&page=0&show
 
 
 
-
-
-### working Steps for GEN SIM
-
-## Step 1 GEN-SIM
-cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau50_8TeV_pythia6_cff.py --fileout file:EXO-Summer12-02641.root --mc --eventcontent RAWSIM --datatier GEN-SIM --conditions START53_V7C::All --beamspot Realistic8TeVCollision --step GEN,SIM -n 5 --no_exec
-
- cmsRun GMSB_Lambda180_CTau50_8TeV_pythia6_cff_py_GEN_SIM.py
-
-## Step 2 DIGI to HLT
-
-cmsDriver.py step1 --filein "file:./EXO-Summer12-02641.root" --fileout file:EXO-Summer12DR53X-02697_step1.root --mc --eventcontent RAWSIM --pileup 2012_Summer_50ns_PoissonOOTPU --datatier GEN-SIM-RAW --conditions START53_V19::All --step DIGI,L1,DIGI2RAW,HLT:7E33v2 -n 5 --no_exec
-
-cmsRun step1_DIGI_L1_DIGI2RAW_HLT_PU.py
-
-## step 3 HLT to RECO
-
-cmsDriver.py step2 --filein file:EXO-Summer12DR53X-02697_step1.root --fileout file:EXO-Summer12DR53X-02697.root --mc --eventcontent RECOSIM,DQM --datatier RECOSIM,DQM --conditions START53_V19::All -s RAW2DIGI,L1Reco,RECO,DQM:DQMOfflinePOGMC -n 5 --no_exec
-
-cmsRun step2_RAW2DIGI_L1Reco_RECO_DQM.py
 
 
 ### And Thats it!! Now you can go ahead and  Analyse your events(RECO) using
