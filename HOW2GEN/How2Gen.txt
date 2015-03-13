@@ -8,6 +8,18 @@
 # TEN@UMN.EDU
 #
 ### To Gen MC just do in a CMSSW environment:
+
+
+
+## Pertectly working MC GEN command on CMSSW_6_1_X
+cmsDriver.py  Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau500_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All --beamspot Realistic8TeVCollision --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO
+--mc --eventcontent RECOSIM -n 5 --no_exec
+
+
+
+
+
+
 cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda160_CTau6000_8TeV_pythia6_cff.py -s GEN --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM -n 1000 --no_exec
 
 ### Better use this:
