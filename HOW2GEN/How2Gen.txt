@@ -12,13 +12,122 @@
 
 
 ## Pertectly working MC GEN command on CMSSW_6_1_X
+
+## One Go straight away!!
 cmsDriver.py  Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau500_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All --beamspot Realistic8TeVCollision --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO
 --mc --eventcontent RECOSIM -n 5 --no_exec
 
 
+### ALSO Works Like Magic:
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau500_8TeV_pythia6_cff.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT:7E33v3,RAW2DIGI,L1Reco,RECO --conditions=START61_V11::All --beamspot Realistic8TeVCollision --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC --datatier GEN-SIM-RECO  --mc --eventcontent RECOSIM -n 3 --no_exec
 
 
 
+
+### STEPS: 
+ 
+## GEN to SIM
+cmsDriver.py Configuration/GenProduction/python/EightTeV/GMSB_Lambda180_CTau500_8TeV_pythia6_cff.py --step GEN,SIM --conditions=START61_V11::All --beamspot Realistic8TeVCollision --pileup 2012_Summer_50ns_PoissonOOTPU --datatier GEN-SIM --mc --eventcontent RAWSIM --fileout file:EXO-Summer12-L180-ct500.root -n 5 --no_exec
+
+## DIGI  to  HLT
+cmsDriver.py step1 --filein "file:EXO-Summer12-L180-ct500.root" --fileout file:EXO-Summer12-L180-ct500-step1.root --mc --eventcontent RAWSIM --pileup 2012_Summer_50ns_PoissonOOTPU --customise Configuration/GlobalRuns/reco_TLR_42X.customisePPMC  --datatier GEN-SIM-RAW --conditions START61_V11::All --step DIGI,L1,DIGI2RAW,HLT:7E33v3 -n 2 --no_exec
+
+### HLT- to RECO
+cmsDriver.py step2 --filein "file:EXO-Summer12-L180-ct500-step1.root" --fileout file:EXO-Summer12-L180-ct500-step2-RECO.root --mc --eventcontent RECOSIM,DQM --datatier RECOSIM,DQM --conditions START61_V11::All -s RAW2DIGI,L1Reco,RECO,DQM:DQMOfflinePOGMC -n 2 --no_exec
+
+
+#### ISSUES WIth One Step Directly ####
+
+## When you run with a one direct step, it gives a complain about
+## HLT absent in the events like this :
+ ********************** PYINIT: initialization completed
+**********************
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 at 13-Mar-2015
+19:04:01.190 CDT
+13-Mar-2015 19:06:23 CDT  Initiating request to open file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+13-Mar-2015 19:09:24 CDT  Successfully opened file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+MSLayersKeeperX0DetLayer LAYERS: 
+%MSG-w InvalidInputTag:  CSCHaloDataProducer:CSCHaloData  13-Mar-2015 19:10:22
+%CDT Run: 1 Event: 1
+The HLT results do not appear to be in the event. The beam halo HLT trigger
+decision will not be used in the halo identification
+%MSG
+Begin processing the 2nd record. Run 1, Event 2, LumiSection 1 at 13-Mar-2015
+19:10:24.458 CDT
+
+
+
+### On the other hand!
+
+If Running all the individual steps, GEN-SIM, DIGI-HLT, HLT-RECO
+you do not get that message and if you look at the 
+content of the final files you see that:
+===> One Step: Running all in one step: the event content is "HLT"
+
+use edmDumpEventContent <outputfileName.root>
+see file: eventContent1Step.log
+===> 3 Steps: Running Steps 1,2,3 the event condent is "RECO"
+see file:  Event3steps.log
+## If running in the official standard 3 steps!!!
+### Output does not show any "HLT NOT in event issue here"!!
+## As seen below here!!
+
+### GEN-SIM step here:
+
+
+
+### Running  DIGI to HLT  Step: 
+==> cmsRun step1_DIGI_L1_DIGI2RAW_HLT_PU.py
+CaloTowerConstituentsMapBuilder::CaloTowerConstituentsMapBuilder
+13-Mar-2015 18:31:26 CDT  Initiating request to open file
+file:EXO-Summer12-L180-ct500.root
+13-Mar-2015 18:31:27 CDT  Successfully opened file
+file:EXO-Summer12-L180-ct500.root
+%MSG-w SiStripQuality:  EventSetupRecordDataGetter:hltGetConditions@beginRun
+%13-Mar-2015 18:32:10 CDT Run: 1
+The cabling should always include the active feds in runInfo and possibly have
+some morethere are instead 59 feds only active in runInfo
+%MSG
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 at 13-Mar-2015
+18:32:47.115 CDT
+13-Mar-2015 18:32:47 CDT  Initiating request to open file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+
+13-Mar-2015 18:31:27 CDT  Successfully opened file
+file:EXO-Summer12-L180-ct500.root
+%MSG-w SiStripQuality:  EventSetupRecordDataGetter:hltGetConditions@beginRun
+%13-Mar-2015 18:32:10 CDT Run: 1
+The cabling should always include the active feds in runInfo and possibly have
+some morethere are instead 59 feds only active in runInfo
+%MSG
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 at 13-Mar-2015
+18:32:47.115 CDT
+13-Mar-2015 18:32:47 CDT  Initiating request to open file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+13-Mar-2015 18:37:50 CDT  Successfully opened file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+MSLayersKeeperX0DetLayer LAYERS: 
+Begin processing the 2nd record. Run 1, Event 2, LumiSection 1 at 13-Mar-2015
+18:38:40.941 CDT
+13-Mar-2015 18:39:12 CDT  Closed file file:EXO-Summer12-L180-ct500.root
+13-Mar-2015 18:39:14 CDT  Closed file
+root://cmsxrootd-site.fnal.gov//store/relval/CMSSW_5_0_0_pre6/RelValProdMinBias/GEN-SIM-RAW/START50_V5-v1/0196/0477EED1-7516-E111-B834-0018F3D0962E.root
+
+=============================================
+
+MessageLogger Summary
+
+### Running HLT to RECO Step: 
+ Nothing like that happens: just take a lot at the event content in the root
+files
+
+
+
+
+
+##### New Ways
 
 cmsDriver.py GMSB-8-TeV/8-TeV-Samples/python/GMSB_Lambda160_CTau6000_8TeV_pythia6_cff.py -s GEN --conditions=START61_V11::All --datatier 'GEN-SIM' --eventcontent RAWSIM -n 1000 --no_exec
 
