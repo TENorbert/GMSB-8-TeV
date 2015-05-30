@@ -1,0 +1,362 @@
+     MSTU(12)       changed from              0 to          12345
+1****************** PYINIT: initialization of PYTHIA routines *****************
+ ==== PYTHIA WILL USE LHAPDF ====
+ *************************************
+ *       LHAPDF Version 5.8.5        *
+ *   Configured for the following:   *
+ *             All PDFs              *
+ *          LOW MEMORY option        *
+ *    Maximum  1 concurrent set(s)   *
+ *************************************
+
+ >>>>>> PDF description: <<<<<<
+ CTEQ6L1 - LO with LO alpha_s                                    
+ Reference:                                                      
+ J. Pumplin, D.R. Stump, J. Huston, H.L. Lai, P. Nadolsky,       
+ W.K. Tung                                                       
+ hep-ph/0201195                                                  
+ >>>>>>                   <<<<<<
+
+ Parametrization: CTEQ6           
+
+ ==============================================
+ PDFset name /cvmfs/cms.cern.ch/slc5_amd64_gcc472/external/lhapdf/5.8.5/share/lhapdf/PDFsets/
+ with          1 members
+ ====  initialized. ===========================
+ Strong coupling at Mz for PDF is:  0.12978
+ ****************** PYSLHA v1.14: SUSY/BSM SPECTRUM INTERFACE *****************
+ * (PYSLHA:) Last Change 10 Jun 2010 - P.Z. Skands
+ * (PYSLHA:) Allowing DECAY table for KF =        6 but this is NOT recommended.
+ * (PYSLHA:) Reading  DECAY table for KF =        6, t               
+ * Warning: will use DECAY table (fixed-width, flat PS) for t               
+ * (PYSLHA:) Reading  DECAY table for KF =  1000021, ~g              
+ * (PYSLHA:) Reading  DECAY table for KF =  1000002, ~u_L            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000001, ~d_L            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000003, ~s_L            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000004, ~c_L            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000005, ~b_1            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000006, ~t_1            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000002, ~u_R            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000001, ~d_R            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000003, ~s_R            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000004, ~c_R            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000005, ~b_2            
+ * (PYSLHA:) Reading  DECAY table for KF =  2000006, ~t_2            
+ * (PYSLHA:) Reading  DECAY table for KF =  1000011, ~e_L-           
+ * (PYSLHA:) Reading  DECAY table for KF =  1000013, ~mu_L-          
+ * (PYSLHA:) Reading  DECAY table for KF =  1000015, ~tau_1-         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000012, ~nu_eL          
+ * (PYSLHA:) Reading  DECAY table for KF =  1000014, ~nu_muL         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000016, ~nu_tauL        
+ * (PYSLHA:) Reading  DECAY table for KF =  2000011, ~e_R-           
+ * (PYSLHA:) Reading  DECAY table for KF =  2000013, ~mu_R-          
+ * (PYSLHA:) Reading  DECAY table for KF =  2000015, ~tau_2-         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000022, ~chi_10         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000023, ~chi_20         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000025, ~chi_30         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000035, ~chi_40         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000024, ~chi_1+         
+ * (PYSLHA:) Reading  DECAY table for KF =  1000037, ~chi_2+         
+ * (PYSLHA:) Reading  DECAY table for KF =       25, h0              
+ *  Note: the Pythia gg->h/H/A cross section is proportional to the h/H/A->gg width
+ * (PYSLHA:) Reading  DECAY table for KF =       35, H0              
+ *  Note: the Pythia gg->h/H/A cross section is proportional to the h/H/A->gg width
+ * (PYSLHA:) Reading  DECAY table for KF =       36, A0              
+ *  Note: the Pythia gg->h/H/A cross section is proportional to the h/H/A->gg width
+ * (PYSLHA:) Reading  DECAY table for KF =       37, H+              
+ * (PYSLHA:) Ignoring line      9:      1     1.27836258E+02   # alpha_em^(
+ * (PYSLHA:) Ignoring line     10:      2     1.16570000E-05   # G_Fermi   
+ * (PYSLHA:) Ignoring line     11:      3     1.17200002E-01   # alpha_s(M_
+ * (PYSLHA:) Ignoring line     13:      5     4.19999981E+00   # m_{b}(m_{b
+ * (PYSLHA:) Ignoring line     15:      7     1.77699995E+00   # m_{tau}(po
+ * (PYSLHA:) Ignoring line     26:    101     1.00000000E+00   # Rsl       
+ * (PYSLHA:) Ignoring line     27:    102     0.00000000E+00   # dmH_d^2   
+ * (PYSLHA:) Ignoring line     28:    103     0.00000000E+00   # dmH_u^2   
+ * (PYSLHA:) Ignoring line     29:    104     0.00000000E+00   # d_Y       
+ * (PYSLHA:) PYTHIA will not use BLOCK GAUGE Q=  2.05495239E+03   # ... on line   110
+ * (PYSLHA:) PYTHIA will not use BLOCK YU Q=  2.05495239E+03   #    ... on line   114
+ * (PYSLHA:) PYTHIA will not use BLOCK YD Q=  2.05495239E+03   #    ... on line   116
+ * (PYSLHA:) PYTHIA will not use BLOCK YE Q=  2.05495239E+03   #    ... on line   118
+ * (PYSLHA:) Ignoring line    121:      2     1.50000000E+01   # tan(beta)(
+ * (PYSLHA:) Ignoring line    122:      3     2.51465149E+02   # Higgs vev 
+ * (PYSLHA:) Ignoring line    123:      4     1.23393662E+06   # m_A^2(Q)  
+ * (PYSLHA:) Ignoring BLOCK DCINFO                           # Progr... on line    158
+
+     Advisory warning type 9 given after        0 PYEXEC calls:
+     (PYSLHA:) No mass information found for KF =     1000039    
+ *
+ * (PYSLHA:) INCONSISTENT SPECTRUM WARNING.
+ * Warning: one or more (serious) inconsistencies were found in the spectrum !
+ * Read the error messages above and check your input file.
+
+ *   Spectrum Calculator was: ISASUGRA FRO version 7.80   29-OC
+ *   Read spectrum file on unit:  24
+ *
+ * Pole masses:
+ *     ~d       ~u       ~s       ~c       ~b(12)   ~t(12)
+ *  L  2322.75  2321.35  2322.75  2321.35  2192.38  2005.50
+ *  R  2204.29  2215.07  2204.29  2215.07  2231.61  2247.26
+ *
+ *     ~e       ~nu_e    ~mu      ~nu_mu   ~tau(12) ~nu_tau
+ *  L   777.29   768.55   777.29   768.55   382.38   764.22
+ *  R   381.56     0.00   381.56     0.00   773.59     0.00
+ *
+ *        ~g    ~chi_10  ~chi_20  ~chi_30  ~chi_40  ~chi_1+  ~chi_2+
+ *     1705.43   313.96   601.68   839.72   853.07   602.13   853.46
+ *
+ *     h0       H0       A0       H+                                         
+ *      118.43  1118.21  1110.83  1121.06
+ *
+ * Mixing structure:
+ *           |   ~B   |  ~W_3  |  ~H_1  |  ~H_2  |
+ *   ~chi_10 |  0.998 | -0.008 |  0.061 | -0.026 |
+ *   ~chi_20 |  0.023 |  0.972 | -0.188 |  0.142 |
+ *   ~chi_30 |  0.025 | -0.034 | -0.705 | -0.708 |
+ *   ~chi_40 |  0.058 | -0.234 | -0.681 |  0.692 |
+ *
+ *      L    |   ~W   |   ~H   |            R    |   ~W   |   ~H   |
+ *   ~chi_1+ | -0.965 |  0.262 |         ~chi_1+ | -0.981 |  0.196 |
+ *   ~chi_2+ | -0.262 | -0.965 |         ~chi_2+ | -0.196 | -0.981 |
+ *
+ *        |  ~b_L  |  ~b_R  |        |  ~t_L  |  ~t_R  |          | ~tau_L | ~tau_R |
+ *   ~b_1 |  0.207 |  0.978 |   ~t_1 |  0.049 |  0.999 |   ~tau_1 |  0.045 |  0.999 |
+ *   ~b_2 | -0.978 |  0.207 |   ~t_2 | -0.999 |  0.049 |   ~tau_2 | -0.999 |  0.045 |
+ *
+ * Couplings:
+ *     A_b =  -513.93          A_t =  -458.93    A_tau =   -58.06
+ *   alpha =    -0.07    tan(beta) =    15.00       mu =   829.30
+ *
+ ******************************** END OF PYSLHA *******************************
+  ALLOWING DECAYS TO GRAVITINOS 
+
+ ==============================================================================
+ I                                                                            I
+ I              PYTHIA will be initialized for a p on p collider              I
+ I                  at   8000.000 GeV center-of-mass energy                   I
+ I                                                                            I
+ ==============================================================================
+ Warning: requested subprocess 203 has vanishing cross-section.
+ Process switched off!
+ Warning: requested subprocess 206 has vanishing cross-section.
+ Process switched off!
+
+ ******** PYMAXI: summary of differential cross-section maximum search ********
+
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 at 30-May-2015 08:59:59.161 CDT
+Begin processing the 2nd record. Run 1, Event 2, LumiSection 1 at 30-May-2015 09:01:04.345 CDT
+Begin processing the 3rd record. Run 1, Event 3, LumiSection 1 at 30-May-2015 09:02:24.731 CDT
+Begin processing the 4th record. Run 1, Event 4, LumiSection 1 at 30-May-2015 09:03:20.115 CDT
+Begin processing the 5th record. Run 1, Event 5, LumiSection 1 at 30-May-2015 09:04:23.225 CDT
+           ==========================================================
+           I                                      I                 I
+           I  ISUB  Subprocess name               I  Maximum value  I
+           I                                      I                 I
+           ==========================================================
+           I                                      I                 I
+           I   96   Semihard QCD 2 -> 2           I    8.0723D+03   I
+           I  201   f + fbar -> ~e_L + ~e_Lbar    I    1.7299D-13   I
+           I  202   f + fbar -> ~e_R + ~e_Rbar    I    3.8113D-12   I
+           I  204   f + fbar -> ~mu_L + ~mu_Lbar  I    1.7299D-13   I
+           I  205   f + fbar -> ~mu_R + ~mu_Rbar  I    3.8113D-12   I
+           I  207   f+fbar -> ~tau_1 + ~tau_1bar  I    3.7647D-12   I
+           I  208   f+fbar -> ~tau_2 + ~tau_2bar  I    1.7806D-13   I
+           I  209   f+fbar -> ~tau_1 + ~tau_2bar  I    1.8916D-15   I
+           I  210   q + qbar' -> ~l_L + ~nulbar   I    6.7108D-13   I
+           I  211   q+qbar'-> ~tau_1 + ~nutaubar  I    4.0639D-15   I
+           I  212   q+qbar'-> ~tau_2 + ~nutaubar  I    3.4698D-13   I
+           I  213   f + fbar -> ~nul + ~nulbar    I    3.4082D-13   I
+           I  214   f+fbar -> ~nutau + ~nutaubar  I    1.7709D-13   I
+           I  216   f + fbar -> ~chi1 + ~chi1     I    8.9953D-14   I
+           I  217   f + fbar -> ~chi2 + ~chi2     I    1.6961D-13   I
+           I  218   f + fbar -> ~chi3 + ~chi3     I    1.4005D-18   I
+           I  219   f + fbar -> ~chi4 + ~chi4     I    1.1369D-16   I
+           I  220   f + fbar -> ~chi1 + ~chi2     I    9.7000D-15   I
+           I  221   f + fbar -> ~chi1 + ~chi3     I    1.3666D-14   I
+           I  222   f + fbar -> ~chi1 + ~chi4     I    1.5987D-15   I
+           I  223   f + fbar -> ~chi2 + ~chi3     I    8.6840D-14   I
+           I  224   f + fbar -> ~chi2 + ~chi4     I    4.2383D-15   I
+           I  225   f + fbar -> ~chi3 + ~chi4     I    5.6909D-13   I
+           I  226   f+fbar -> ~chi+-1 + ~chi-+1   I    2.2353D-11   I
+           I  227   f+fbar -> ~chi+-2 + ~chi-+2   I    1.2782D-12   I
+           I  228   f+fbar -> ~chi+-1 + ~chi-+2   I    7.1212D-14   I
+           I  229   q + qbar' -> ~chi1 + ~chi+-1  I    4.5449D-14   I
+           I  230   q + qbar' -> ~chi2 + ~chi+-1  I    2.4507D-11   I
+           I  231   q + qbar' -> ~chi3 + ~chi+-1  I    1.7348D-13   I
+           I  232   q + qbar' -> ~chi4 + ~chi+-1  I    6.3084D-14   I
+           I  233   q + qbar' -> ~chi1 + ~chi+-2  I    3.0672D-14   I
+           I  234   q + qbar' -> ~chi2 + ~chi+-2  I    5.2263D-14   I
+           I  235   q + qbar' -> ~chi3 + ~chi+-2  I    1.1750D-12   I
+           I  236   q + qbar' -> ~chi4 + ~chi+-2  I    1.2333D-12   I
+           I  237   q + qbar -> ~chi1 + ~g        I    1.0130D-13   I
+           I  238   q + qbar -> ~chi2 + ~g        I    1.0947D-13   I
+           I  239   q + qbar -> ~chi3 + ~g        I    4.0711D-16   I
+           I  240   q + qbar -> ~chi4 + ~g        I    2.5261D-15   I
+           I  241   q + qbar' -> ~chi+-1 + ~g     I    1.9925D-13   I
+           I  242   q + qbar' -> ~chi+-2 + ~g     I    4.9513D-15   I
+           I  243   q + qbar -> ~g + ~g           I    6.1071D-14   I
+           I  244   g + g -> ~g + ~g              I    1.7131D-13   I
+           I  246   qj + g -> ~qj_L + ~chi1       I    7.5671D-15   I
+           I  247   qj + g -> ~qj_R + ~chi1       I    2.0418D-13   I
+           I  248   qj + g -> ~qj_L + ~chi2       I    1.4457D-13   I
+           I  249   qj + g -> ~qj_R + ~chi2       I    6.6345D-17   I
+           I  250   qj + g -> ~qj_L + ~chi3       I    6.8043D-17   I
+           I  251   qj + g -> ~qj_R + ~chi3       I    3.9170D-17   I
+           I  252   qj + g -> ~qj_L + ~chi4       I    3.7492D-15   I
+           I  253   qj + g -> ~qj_R + ~chi4       I    2.0701D-16   I
+           I  254   qj + g -> ~qk_L + ~chi+-1     I    2.8109D-13   I
+           I  256   qj + g -> ~qk_L + ~chi+-2     I    1.0222D-14   I
+           I  258   qj + g -> ~qj_L + ~g          I    4.2963D-13   I
+           I  259   qj + g -> ~qj_R + ~g          I    6.3916D-13   I
+           I  261   f + fbar -> ~t_1 + ~t_1bar    I    5.6996D-16   I
+           I  262   f + fbar -> ~t_2 + ~t_2bar    I    5.3142D-17   I
+           I  263   f + fbar -> ~t_1 + ~t_2bar    I    1.3139D-20   I
+           I  264   g + g -> ~t_1 + ~t_1bar       I    3.6471D-16   I
+           I  265   g + g -> ~t_2 + ~t_2bar       I    3.4335D-17   I
+           I  271   qi + qj -> ~qi_L + ~qj_L      I    9.4059D-13   I
+           I  272   qi + qj -> ~qi_R + ~qj_R      I    2.1223D-12   I
+           I  273   qi + qj -> ~qi_L + ~qj_R      I    3.5466D-13   I
+           I  274   qi+qjbar -> ~qi_L + ~qj_Lbar  I    2.1111D-15   I
+           I  275   qi+qjbar -> ~qi_R + ~qj_Rbar  I    6.0201D-15   I
+           I  276   qi+qjbar -> ~qi_L + ~qj_Rbar  I    1.6170D-14   I
+           I  277   f + fbar -> ~qi_L + ~qi_Lbar  I    4.9600D-18   I
+           I  278   f + fbar -> ~qi_R + ~qi_Rbar  I    1.6535D-17   I
+           I  279   g + g -> ~qi_L + ~qi_Lbar     I    6.4814D-17   I
+           I  280   g + g -> ~qi_R + ~qi_Rbar     I    1.9305D-16   I
+           I  281   b + qj -> ~b_1 + ~qj_L        I    1.4628D-16   I
+           I  282   b + qj -> ~b_2 + ~qj_R        I    1.9761D-16   I
+           I  283   b + qj -> ~b_1 + ~qj_R        I    7.6725D-17   I
+           I  284   b + qjbar -> ~b_1 + ~qj_Lbar  I    2.4326D-17   I
+           I  285   b + qjbar -> ~b_2 + ~qj_Rbar  I    3.2244D-17   I
+           I  286   b + qjbar -> ~b_1 + ~qj_Rbar  I    4.7485D-16   I
+           I  287   f + fbar -> ~b_1 + ~b_1bar    I    9.4074D-17   I
+           I  288   f + fbar -> ~b_2 + ~b_2bar    I    6.2411D-17   I
+           I  289   g + g -> ~b_1 + ~b_1bar       I    6.0527D-17   I
+           I  290   g + g -> ~b_2 + ~b_2bar       I    4.0241D-17   I
+           I  291   b + b -> ~b_1 + ~b_1          I    6.7927D-20   I
+           I  292   b + b -> ~b_2 + ~b_2          I    4.9260D-20   I
+           I  293   b + b -> ~b_1 + ~b_2          I    1.3933D-20   I
+           I  294   b + g -> ~b_1 + ~g            I    2.2060D-16   I
+           I  295   b + g -> ~b_2 + ~g            I    1.8413D-16   I
+           I  296   b + bbar -> ~b_1 + ~b_2bar    I    9.4193D-20   I
+           I                                      I                 I
+           ==========================================================
+
+ ****** PYMULT: initialization of multiple interactions for MSTP(82) = 4 ******
+        pT0 = 2.70 GeV gives sigma(parton-parton) = 4.33D+02 mb: accepted
+
+ ****** PYMIGN: initialization of multiple interactions for MSTP(82) = 4 ******
+        pT0 = 2.70 GeV gives sigma(parton-parton) = 1.83D+02 mb: accepted
+
+ ********************** PYINIT: initialization completed **********************
+1********* PYSTAT:  Statistics on Number of Events and Cross-sections *********
+
+ ==============================================================================
+ I                                  I                            I            I
+ I            Subprocess            I      Number of points      I    Sigma   I
+ I                                  I                            I            I
+ I----------------------------------I----------------------------I    (mb)    I
+ I                                  I                            I            I
+ I N:o Type                         I    Generated         Tried I            I
+ I                                  I                            I            I
+ ==============================================================================
+ I                                  I                            I            I
+ I   0 All included subprocesses    I            5            76 I  4.555D-12 I
+ I 201 f + fbar -> ~e_L + ~e_Lbar   I            0             0 I  0.000D+00 I
+ I 202 f + fbar -> ~e_R + ~e_Rbar   I            0             6 I  1.767D-22 I
+ I 204 f + fbar -> ~mu_L + ~mu_Lbar I            0             0 I  0.000D+00 I
+ I 205 f + fbar -> ~mu_R + ~mu_Rbar I            0             6 I  2.285D-14 I
+
+=============================================
+
+MessageLogger Summary
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+ I 207 f+fbar -> ~tau_1 + ~tau_1bar I            0             3 I  5.684D-13 I
+ I 208 f+fbar -> ~tau_2 + ~tau_2bar I            0             0 I  0.000D+00 I
+ I 209 f+fbar -> ~tau_1 + ~tau_2bar I            0             0 I  0.000D+00 I
+ I 210 q + qbar' -> ~l_L + ~nulbar  I            0             0 I  0.000D+00 I
+ I 211 q+qbar'-> ~tau_1 + ~nutaubar I            0             0 I  0.000D+00 I
+ I 212 q+qbar'-> ~tau_2 + ~nutaubar I            0             0 I  0.000D+00 I
+ I 213 f + fbar -> ~nul + ~nulbar   I            0             0 I  0.000D+00 I
+ I 214 f+fbar -> ~nutau + ~nutaubar I            0             0 I  0.000D+00 I
+ I 216 f + fbar -> ~chi1 + ~chi1    I            0             1 I  7.174D-15 I
+ I 217 f + fbar -> ~chi2 + ~chi2    I            0             0 I  0.000D+00 I
+ I 218 f + fbar -> ~chi3 + ~chi3    I            0             0 I  0.000D+00 I
+ I 219 f + fbar -> ~chi4 + ~chi4    I            0             0 I  0.000D+00 I
+ I 220 f + fbar -> ~chi1 + ~chi2    I            0             0 I  0.000D+00 I
+ I 221 f + fbar -> ~chi1 + ~chi3    I            0             0 I  0.000D+00 I
+ I 222 f + fbar -> ~chi1 + ~chi4    I            0             0 I  0.000D+00 I
+ I 223 f + fbar -> ~chi2 + ~chi3    I            0             0 I  0.000D+00 I
+ I 224 f + fbar -> ~chi2 + ~chi4    I            0             0 I  0.000D+00 I
+ I 225 f + fbar -> ~chi3 + ~chi4    I            1             1 I  1.444D-13 I
+ I 226 f+fbar -> ~chi+-1 + ~chi-+1  I            1            25 I  1.458D-12 I
+ I 227 f+fbar -> ~chi+-2 + ~chi-+2  I            0             3 I  6.617D-15 I
+ I 228 f+fbar -> ~chi+-1 + ~chi-+2  I            0             0 I  0.000D+00 I
+ I 229 q + qbar' -> ~chi1 + ~chi+-1 I            0             0 I  0.000D+00 I
+ I 230 q + qbar' -> ~chi2 + ~chi+-1 I            3            26 I  2.347D-12 I
+ I 231 q + qbar' -> ~chi3 + ~chi+-1 I            0             0 I  0.000D+00 I
+ I 232 q + qbar' -> ~chi4 + ~chi+-1 I            0             0 I  0.000D+00 I
+ I 233 q + qbar' -> ~chi1 + ~chi+-2 I            0             0 I  0.000D+00 I
+ I 234 q + qbar' -> ~chi2 + ~chi+-2 I            0             0 I  0.000D+00 I
+ I 235 q + qbar' -> ~chi3 + ~chi+-2 I            0             0 I  0.000D+00 I
+ I 236 q + qbar' -> ~chi4 + ~chi+-2 I            0             1 I  1.562D-25 I
+ I 237 q + qbar -> ~chi1 + ~g       I            0             1 I  1.959D-16 I
+ I 238 q + qbar -> ~chi2 + ~g       I            0             0 I  0.000D+00 I
+ I 239 q + qbar -> ~chi3 + ~g       I            0             0 I  0.000D+00 I
+ I 240 q + qbar -> ~chi4 + ~g       I            0             0 I  0.000D+00 I
+ I 241 q + qbar' -> ~chi+-1 + ~g    I            0             0 I  0.000D+00 I
+ I 242 q + qbar' -> ~chi+-2 + ~g    I            0             0 I  0.000D+00 I
+ I 243 q + qbar -> ~g + ~g          I            0             0 I  0.000D+00 I
+ I 244 g + g -> ~g + ~g             I            0             0 I  0.000D+00 I
+ I 246 qj + g -> ~qj_L + ~chi1      I            0             0 I  0.000D+00 I
+ I 247 qj + g -> ~qj_R + ~chi1      I            0             0 I  0.000D+00 I
+ I 248 qj + g -> ~qj_L + ~chi2      I            0             0 I  0.000D+00 I
+ I 249 qj + g -> ~qj_R + ~chi2      I            0             0 I  0.000D+00 I
+ I 250 qj + g -> ~qj_L + ~chi3      I            0             0 I  0.000D+00 I
+ I 251 qj + g -> ~qj_R + ~chi3      I            0             0 I  0.000D+00 I
+ I 252 qj + g -> ~qj_L + ~chi4      I            0             0 I  0.000D+00 I
+ I 253 qj + g -> ~qj_R + ~chi4      I            0             0 I  0.000D+00 I
+ I 254 qj + g -> ~qk_L + ~chi+-1    I            0             1 I  2.733D-21 I
+ I 256 qj + g -> ~qk_L + ~chi+-2    I            0             0 I  0.000D+00 I
+ I 258 qj + g -> ~qj_L + ~g         I            0             0 I  0.000D+00 I
+ I 259 qj + g -> ~qj_R + ~g         I            0             0 I  0.000D+00 I
+ I 261 f + fbar -> ~t_1 + ~t_1bar   I            0             0 I  0.000D+00 I
+ I 262 f + fbar -> ~t_2 + ~t_2bar   I            0             0 I  0.000D+00 I
+ I 263 f + fbar -> ~t_1 + ~t_2bar   I            0             0 I  0.000D+00 I
+ I 264 g + g -> ~t_1 + ~t_1bar      I            0             0 I  0.000D+00 I
+ I 265 g + g -> ~t_2 + ~t_2bar      I            0             0 I  0.000D+00 I
+ I 271 qi + qj -> ~qi_L + ~qj_L     I            0             0 I  0.000D+00 I
+ I 272 qi + qj -> ~qi_R + ~qj_R     I            0             2 I  1.539D-24 I
+ I 273 qi + qj -> ~qi_L + ~qj_R     I            0             0 I  0.000D+00 I
+ I 274 qi+qjbar -> ~qi_L + ~qj_Lbar I            0             0 I  0.000D+00 I
+ I 275 qi+qjbar -> ~qi_R + ~qj_Rbar I            0             0 I  0.000D+00 I
+ I 276 qi+qjbar -> ~qi_L + ~qj_Rbar I            0             0 I  0.000D+00 I
+ I 277 f + fbar -> ~qi_L + ~qi_Lbar I            0             0 I  0.000D+00 I
+ I 278 f + fbar -> ~qi_R + ~qi_Rbar I            0             0 I  0.000D+00 I
+ I 279 g + g -> ~qi_L + ~qi_Lbar    I            0             0 I  0.000D+00 I
+ I 280 g + g -> ~qi_R + ~qi_Rbar    I            0             0 I  0.000D+00 I
+ I 281 b + qj -> ~b_1 + ~qj_L       I            0             0 I  0.000D+00 I
+ I 282 b + qj -> ~b_2 + ~qj_R       I            0             0 I  0.000D+00 I
+ I 283 b + qj -> ~b_1 + ~qj_R       I            0             0 I  0.000D+00 I
+ I 284 b + qjbar -> ~b_1 + ~qj_Lbar I            0             0 I  0.000D+00 I
+ I 285 b + qjbar -> ~b_2 + ~qj_Rbar I            0             0 I  0.000D+00 I
+ I 286 b + qjbar -> ~b_1 + ~qj_Rbar I            0             0 I  0.000D+00 I
+ I 287 f + fbar -> ~b_1 + ~b_1bar   I            0             0 I  0.000D+00 I
+ I 288 f + fbar -> ~b_2 + ~b_2bar   I            0             0 I  0.000D+00 I
+ I 289 g + g -> ~b_1 + ~b_1bar      I            0             0 I  0.000D+00 I
+ I 290 g + g -> ~b_2 + ~b_2bar      I            0             0 I  0.000D+00 I
+ I 291 b + b -> ~b_1 + ~b_1         I            0             0 I  0.000D+00 I
+ I 292 b + b -> ~b_2 + ~b_2         I            0             0 I  0.000D+00 I
+ I 293 b + b -> ~b_1 + ~b_2         I            0             0 I  0.000D+00 I
+ I 294 b + g -> ~b_1 + ~g           I            0             0 I  0.000D+00 I
+ I 295 b + g -> ~b_2 + ~g           I            0             0 I  0.000D+00 I
+ I 296 b + bbar -> ~b_1 + ~b_2bar   I            0             0 I  0.000D+00 I
+ I                                  I                            I            I
+ ==============================================================================
+
+ ********* Total number of errors, excluding junctions =        0 *************
+ ********* Total number of errors, including junctions =        0 *************
+ ********* Total number of warnings =                           1 *************
+ ********* Fraction of events that fail fragmentation cuts =  0.00000 *********
+
